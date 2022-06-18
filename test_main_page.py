@@ -1,12 +1,11 @@
-from selenium.webdriver.common.by import By
-
-link = "http://selenium1py.pythonanywhere.com/"
-
-
-def go_to_login_page(browser):
-    login_link = browser.find_element(By.CSS_SELECTOR, "#login_link")
-    login_link.click()
+from .pages.main_page import MainPage
 
 def test_guest_can_go_to_login_page(browser):
-    browser.get(link)
-    go_to_login_page(browser)
+    link = "http://selenium1py.pythonanywhere.com/"
+    page = MainPage(browser, link)      # ініціалізуємо Page Object, передаємо в конструктор екземпляр драйверу та url адресу
+    page.open()                         # відкриваємо сторінку
+    page.go_to_login_page()             # виконуємо метод сторінки - переходимо на сторінку логіну
+
+
+
+
