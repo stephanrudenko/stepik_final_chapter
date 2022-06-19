@@ -7,7 +7,7 @@ class LoginPage(BasePage):
         self.should_be_login_form()
         self.should_be_register_form()
 
-    def should_be_login_substring(self):
+    def should_be_login_url(self):
         # реализуйте проверку на корректный url адрес
         assert '/login/' in self.browser.current_url, "Current url are not contains '/login/' substring"        
 
