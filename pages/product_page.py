@@ -1,7 +1,7 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
 from selenium.common.exceptions import NoAlertPresentException
-import math
+import math, time
 
 class ProductPage(BasePage):
     def add_to_cart_button(self):
@@ -25,7 +25,7 @@ class ProductPage(BasePage):
     def correct_item_in_cart(self):
         item_name = self.browser.find_element(*ProductPageLocators.ITEM_NAME).text
         item_message = self.browser.find_element(*ProductPageLocators.ITEM_MESSAGE).text
-        assert item_name in item_message, "No item name were added to cart"
+        assert item_name == item_message, "Incorrect name were added to cart"
 
     def correct_price_in_cart(self):
         item_price = self.browser.find_element(*ProductPageLocators.ITEM_PRICE)
